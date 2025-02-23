@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            background-color: #d3cc3b;
+            font-family: Georgia, serif;
+            color: #5a005a;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        
+        .nav-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 140px;
+            padding: 10px;
+            background-color: white;
+            text-decoration: none;
+            color: blue;
+            font-weight: bold;
+            border-left: 5px solid black;
+        }
+        
+        main {
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px dotted black;
+            margin: 20px 0;
+        }
+        
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Side navigation bar -->
+        <nav class="sidebar">
+            <a href="#" class="nav-item">Home page</a>
+            <a href="#" class="nav-item">Musings</a>
+            <a href="#" class="nav-item">My town</a>
+            <a href="#" class="nav-item">Links</a>
+        </nav>
+
+        <!-- Main content -->
+        <main>
+            <h1>My first styled page</h1>
+            <p>Welcome to my styled page!</p>
+            <p>
+                It lacks images, but at least it has style. And it has links, even if they don't go anywhere...
+            </p>
+            <p>There should be more here, but I don't know what yet.</p>
+            <hr />
+            <p>
+                <em>Made 20 Feb. 2025<br />by myself.</em>
+            </p>
+        </main>
+    </div>
+</body>
+
+</html>

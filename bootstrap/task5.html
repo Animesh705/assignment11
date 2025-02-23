@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 17 - Form Validation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: #212529;
+        }
+        
+        .form-control {
+            border: 1px solid #ced4da;
+            padding: 0.75rem;
+        }
+        
+        .form-control:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            padding-right: calc(1.5em + 0.75rem);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="mb-4">Registration Form</h2>
+            <form id="registrationForm" novalidate>
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" />
+                    <div class="error-message" id="firstNameError">
+                        Please supply your first name
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+                    <div class="error-message" id="lastNameError">
+                        Please supply your last name
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-Mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-Mail Address" />
+                    <div class="error-message" id="emailError">
+                        Please supply your email address
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone #</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="(845)555-1212" />
+                    <div class="error-message" id="phoneError">
+                        Please supply your phone number
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Address" />
+                    <div class="error-message" id="addressError">
+                        Please supply your street address
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="city" />
+                    <div class="error-message" id="cityError">
+                        Please supply your city
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document
+            .getElementById("registrationForm")
+            .addEventListener("submit", function(e) {
+                e.preventDefault();
+                let isValid = true;
+
+                // Reset all fields
+                document.querySelectorAll(".form-control").forEach((input) => {
+                    input.classList.remove("is-invalid");
+                    document.getElementById(input.id + "Error").style.display = "none";
+                });
+
+                // Validate each field
+                const fields = [
+                    "firstName",
+                    "lastName",
+                    "email",
+                    "phone",
+                    "address",
+                    "city",
+                ];
+                fields.forEach((field) => {
+                    const input = document.getElementById(field);
+                    if (!input.value.trim()) {
+                        input.classList.add("is-invalid");
+                        document.getElementById(field + "Error").style.display = "block";
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    alert("Form submitted successfully!");
+                    this.reset();
+                }
+            });
+    </script>
+</body>
+
+</html>
